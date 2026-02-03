@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEZDRY ULTIMATE — Футуристичная Дезинфекция</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-inner">
+            <div class="logo" onclick="showPage('home')">
+                <span class="logo-accent">DEZ</span>DRY
+            </div>
+            <nav class="nav-menu">
+                <button onclick="showPage('home')">Главная</button>
+                <button onclick="showPage('prices')">Цены</button>
+                <button onclick="showPage('reviews-page')">Отзывы</button>
+                <button onclick="showPage('contacts')">Контакты</button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="page-home" class="page active">
+        <section class="hero-section">
+            <div class="hero-bg-gradient"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="status-pill">● СИСТЕМА АКТИВНА: МОСКВА И МО</div>
+                    <h1>DEZDRY <span class="orange-text">ELITE</span></h1>
+                    <p class="hero-sub">Премиальный контроль вредителей. Гарантия результата 100%. Инновационные методы истребления.</p>
+                    <button class="btn-mega" onclick="showPage('prices')">УЗНАТЬ ЦЕНЫ</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="page-prices" class="page">
+        <section class="container">
+            <h2 class="title-l">КАТАЛОГ УСЛУГ</h2>
+            <div class="price-grid">
+                <div class="price-item active">
+                    <div class="price-header">Дезинсекция</div>
+                    <div class="price-body">
+                        <div class="row"><span>Квартира</span> <b>от 2 000 ₽</b></div>
+                        <div class="row"><span>Коттедж</span> <b>от 4 500 ₽</b></div>
+                        <button class="btn-order" onclick="openOrderModal('Дезинсекция')">ЗАКАЗАТЬ</button>
+                    </div>
+                </div>
+                <div class="price-item">
+                    <div class="price-header">Дератизация</div>
+                    <div class="price-body">
+                        <div class="row"><span>Грызуны (склад)</span> <b>от 5 000 ₽</b></div>
+                        <div class="row"><span>Кроты (участок)</span> <b>от 4 000 ₽</b></div>
+                        <button class="btn-order" onclick="openOrderModal('Дератизация')">ЗАКАЗАТЬ</button>
+                    </div>
+                </div>
+                <div class="price-item">
+                    <div class="price-header">Клининг PRO</div>
+                    <div class="price-body">
+                        <div class="row"><span>Генеральная</span> <b>от 6 000 ₽</b></div>
+                        <div class="row"><span>После ремонта</span> <b>от 9 000 ₽</b></div>
+                        <button class="btn-order" onclick="openOrderModal('Клининг')">ЗАКАЗАТЬ</button>
+                    </div>
+                </div>
+                <div class="price-item">
+                    <div class="price-header">Фумигация</div>
+                    <div class="price-body">
+                        <div class="row"><span>Тара (склад)</span> <b>от 8 000 ₽</b></div>
+                        <div class="row"><span>Древесина</span> <b>от 12 000 ₽</b></div>
+                        <button class="btn-order" onclick="openOrderModal('Фумигация')">ЗАКАЗАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="page-reviews-page" class="page">
+        <section class="container">
+            <h2 class="title-l">СИСТЕМА ОТЗЫВОВ</h2>
+            <div class="reviews-slider-container">
+                <div class="reviews-track top-track" id="track-1"></div>
+                <div class="reviews-track bottom-track" id="track-2"></div>
+            </div>
+        </section>
+    </main>
+
+    <main id="page-contacts" class="page">
+        <section class="container">
+            <div class="contact-card">
+                <h2>КАНАЛЫ СВЯЗИ</h2>
+                <div class="phone-display">+7 (939) 112-43-08</div>
+                <div class="messenger-grid">
+                    <a href="https://wa.me/79391124308" class="mess-box wa-box">
+                        <div class="mess-icon">WA</div>
+                        <div class="mess-info">
+                            <span class="m-label">WhatsApp</span>
+                            <span class="m-link">wa.me/dezdry</span>
+                        </div>
+                    </a>
+                    <a href="https://t.me/dezdry" class="mess-box tg-box">
+                        <div class="mess-icon">TG</div>
+                        <div class="mess-info">
+                            <span class="m-label">Telegram</span>
+                            <span class="m-link">@dezdry_official</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-content">
+            <div id="order-form-step">
+                <h3>ПАРАМЕТРЫ ЗАЯВКИ</h3>
+                <p id="selected-service-name" class="orange-text"></p>
+                <input type="text" id="area" placeholder="Площадь помещения" class="m-input">
+                <input type="datetime-local" id="time" class="m-input">
+                <input type="tel" id="phone" placeholder="Контактный номер" class="m-input">
+                <button class="btn-mega" onclick="submitFinalOrder()">ПОДТВЕРДИТЬ</button>
+                <button class="btn-close" onclick="closeOrderModal()">ОТМЕНА</button>
+            </div>
+            <div id="order-success-step" style="display:none">
+                <h2 class="neon-text-green">СИСТЕМА: ПРИНЯТО</h2>
+                <p>Рассмотрим вашу заявку и ответим в ближайшее время.</p>
+                <button class="btn-mega" onclick="closeOrderModal()">ЗАКРЫТЬ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
